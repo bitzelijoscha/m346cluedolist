@@ -1,9 +1,15 @@
-FROM maven:3.8.5-openjdk-17 AS mvn-builder
+# Use an official Java runtime as a parent image
+FROM openjdk:11-jre-slim
+
+# Set the working directory to /app
 WORKDIR /app
-COPY . .
-RUN mvn clean package
-FROM openjdk:17-jdk-slim
-WORKDIR /app
-COPY --from=mvn-builder /app/target/*.jar /app/*.jar
+
+# Copy the Java application to the container
+ARG APP_FILE
+COPY ${APP_FILE} /app
+
+# Expose the port used by the Java application
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/app/*.jar" ]
+
+# Set the command to run the Java application
+CMD ["java", "-jar", "${APP_FILE}"]
