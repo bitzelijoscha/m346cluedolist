@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cluedo</title>
+    <link rel="stylesheet" href="css/mvp.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Cluedo data lists:</h1>
+        </header>
+        <h2>The persons</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Form of adress</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="person : ${persons}">
+                <td th:text="${person.name}"></td>
+                <td th:text="${person.formOfAdress}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <h2>The weapons</h2>
+        <p>To be done</p>
+        <h2>The rooms</h2>
+        <p>To be done</p>
+    </main>
+    <footer>
+        <hr>
+        <p>
+            <small>(c) P.Rutschmann</small>
+        </p>
+    </footer>
+</body>
+</html>
